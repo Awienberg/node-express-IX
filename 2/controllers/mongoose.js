@@ -11,7 +11,7 @@ const mongoose = require("mongoose");
  * Wex19, lesson 14
  */
 const continent = mongoose.Schema ({
-    continentType: String
+    continentName: String
 });
 const continent = mongoose.model("Continent", continent);
 
@@ -49,10 +49,31 @@ const db = mongoose.connection;
 db.once("open", function() {
     console.log("Connected to server by mongoose")
 });
-/*
- * alternative way of inserting, the C of CRUD
- * create below includes the save functionality
- */
+// Create continent, govermentform and country
+continent.create(
+    {
+        continentName: "String"
+    },
+    function(error, savedDocument) {
+        if (error) console.log(error);
+        console.log(savedDocument);
+
+        db.close();
+    }
+);
+
+govermentform.create(
+    {
+        govermentformType: "String"
+    },
+    function(error, savedDocument) {
+        if (error) console.log(error);
+        console.log(savedDocument);
+
+        db.close(); 
+    }
+);
+
 country.create(
     {
         code: "String",
@@ -75,7 +96,6 @@ country.create(
         if (error) console.log(error);
         console.log(savedDocument);
 
-        db.close();     // if forgotten batch job doesn't stop by itself
-
+        db.close(); 
     }
 );
