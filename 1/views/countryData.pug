@@ -22,7 +22,7 @@ block content
                         td.col_l Continent
                         td
                             select(name='conti')
-                                each continent in cont
+                                each continent in continents
                                     option #{continent.name}
                     tr
                         td.col_l Region
@@ -56,7 +56,7 @@ block content
                         td.col_l Government Form
                         td
                             select(name='gov')
-                                each govermentform in govform
+                                each govermentform in govermentforms
                                     option #{govermentform.name}
                     tr
                         td.col_l Head of State

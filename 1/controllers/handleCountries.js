@@ -16,16 +16,14 @@ exports.getCountries = async function (res) {
 
 exports.countryData = async function (res, conti, gov) {
     try {
-        let cs = await mon.retrieve("localhost", "world", "country", {});
-        let continent = await mon.retrieve("localhost", "world", "continent", {"name": conti });
-        let governmentform = await mon.retrieve("localhost", "world", "governmentform", {"name": gov });
+        let continent = await mon.retrieve("localhost", "world", "continent", {}, {"name": conti });
+        let governmentform = await mon.retrieve("localhost", "world", "governmentform", {}, {"name": gov });
 
         res.render('countryData', {
             title: 'Country Data',
             subtitle: 'Enter Country data:',
-            countries: cs,
-            cont: continent,
-            govform: governmentform
+            continents: continent,
+            govermentforms: governmentform
         });
     } catch (e) {
         console.log(e);
